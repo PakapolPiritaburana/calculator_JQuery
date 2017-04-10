@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>Calculator</title>
+		<hi>Calculator</hi>
+		<script type="text/javascript" src="jQuery/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript">
+			$("document").ready(function () {
+				var result1 = "";
+				var result2 = "";
+				var result = 0;
+				var oper = null;
+				$(".Show").click(function() {
+			   		var addNum = $(this).val();
+			   		if(oper == null) {
+			   			result1 = result1 + addNum;
+			   			$("#Result").val(result1);
+			   		} else {
+			   			result2 = result2 + addNum;
+			   			$("#Result").val(result2);
+			   		}
+				});
+				$(".operators").click(function() {
+					oper = $(this).val();
+					$("#Result").val(oper);
+				});
+				$(".operand").click(function() {
+					result = calcu(result1, result2, oper);
+					oper = null;
+					result1 = result;
+					result2 = "";
+					$("#Result").val(result);
+					console.log(result1)
+					console.log(result2)
+					console.log(oper)
+				})
+				$("#ClearAll").click(function() {
+					oper = null;
+					result1 = "";
+					result2 = "";
+					$("#Result").val("");
+				});
+				$("#Clear").click(function() {
+					$("#Result").val("");
+					if(result1 != "" && oper == null) {
+						result1 = "";
+					}
+					else if(result1 != "" && oper != null && result2 == "") {
+						oper = null;
+					}
+					else if(result1 != "" && oper != null && result2 != "") {
+						result2 = "";
+					}
+					console.log(result1)
+					console.log(result2)
+					console.log(oper)
+				});
+				function calcu(val1, val2, oper) {
+					var res;
+					switch (oper) {
+						case "+":
+							res = parseInt(val1) + parseInt(val2)
+							break;
+						case "-":
+							res = parseInt(val1) - parseInt(val2)
+							break;
+						case "*":
+							res = parseInt(val1) * parseInt(val2)
+							break;
+						case "/":
+							res = parseInt(val1) / parseInt(val2)
+							break;
+					}
+					return res;
+				}
+			});		
+		</script>
+	</head>
+	<body>
+		<div id="main">
+		    <input id="Result" type="text"/>
+		    <div id="keys">
+		        <div id="FirstRow">
+		            <button id="ClearAll" type="reset" value="CE" class="clean">CE</button>
+		            <button id="Clear" type="reset" value="C" class="clean">C</button>
+		            <button id="Add" type="button" value="+" class="operators">+</button>
+		        </div>
+		        <div id="SecondRow">
+		            <button id="One" type="button" value="1" class="Show">1</button>
+		            <button id="Two" type="button" value="2" class="Show">2</button>
+		            <button id="Three" type="button" value="3" class="Show">3</button>
+		            <button id="Sub" type="button" value="-" class="operators">-</button>
+		        </div>
+		        <div id="ThirdRow">
+		            <button id="Four" type="button" value="4" class="Show">4</button>
+		            <button id="Five" type="button" value="5" class="Show">5</button>
+		            <button id="six" type="button" value="6" class="Show">6</button>
+		            <button id="Mul" type="button" value="*" class="operators">*</button>
+		        </div>
+		        <div id="FourthRow">
+		            <button id="Seven" type="button" value="7" class="Show">7</button>
+		            <button id="Eight" type="button" value="8" class="Show">8</button>
+		            <button id="Nine" type="button" value="9" class="Show">9</button>
+		            <button id="Divide" type="button" value="/" class="operators">/</button>
+		        </div>
+		        <div id="FifthRow">
+		            <button id="Zero" type="button" value="0" class="Show">0</button>
+		            <button id="Dot" type="button" value="." class="Show">.</button>
+		            <button id="Calculate" type="button" value="=" class="operand">=</button>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
