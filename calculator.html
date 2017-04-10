@@ -29,9 +29,6 @@
 					result1 = result;
 					result2 = "";
 					$("#Result").val(result);
-					console.log(result1)
-					console.log(result2)
-					console.log(oper)
 				})
 				$("#ClearAll").click(function() {
 					oper = null;
@@ -50,24 +47,21 @@
 					else if(result1 != "" && oper != null && result2 != "") {
 						result2 = "";
 					}
-					console.log(result1)
-					console.log(result2)
-					console.log(oper)
 				});
 				function calcu(val1, val2, oper) {
 					var res;
 					switch (oper) {
 						case "+":
-							res = parseInt(val1) + parseInt(val2)
+							res = parseFloat(val1) + parseFloat(val2)
 							break;
 						case "-":
-							res = parseInt(val1) - parseInt(val2)
+							res = parseFloat(val1) - parseFloat(val2)
 							break;
 						case "*":
-							res = parseInt(val1) * parseInt(val2)
+							res = parseFloat(val1) * parseFloat(val2)
 							break;
 						case "/":
-							res = parseInt(val1) / parseInt(val2)
+							res = parseFloat(val1) / parseFloat(val2)
 							break;
 					}
 					return res;
